@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0a23ef384d00ea4ea56011c03d200bd, type: 3}
+  m_Name: EnemyFactory
+  m_EditorClassIdentifier: 
+  weak:
+    prefab: {fileID: 114374009980137506, guid: fe2564870a833194db085506bfdc50e6, type: 2}
+    Health: 100
+    Attack: 10
+    Defence: 10
+  strong:
+    prefab: {fileID: 0}
+    Health: 100
+    Attack: 10
+    Defence: 10

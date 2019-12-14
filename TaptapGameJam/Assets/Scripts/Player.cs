@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Spine.Unity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,13 +19,15 @@ public class Player : MonoBehaviour
     private bool isJumpingFirstTime;
     private int curJumpNum = 0;
     
-    private bool isGround, isJumping;
+    private bool isGround, isJumping, isUsingTorch = false;
     private Rigidbody2D rig;
 
     public float minTorchHeight, maxTorchHeight;
     Vector3 curPos, lastPos;
     Transform shadow,torch;
     Rigidbody2D shadowRig;
+    SkeletonAnimation animation;
+
 
     // Start is called before the first frame update
     void Start()
@@ -33,6 +36,7 @@ public class Player : MonoBehaviour
         shadowRig = GamePlayManager.Instance.shadowRig;
         shadow = shadowRig.transform;
         rig = GetComponent<Rigidbody2D>();
+        animation = GetComponent<SkeletonAnimation>();
         curPos = transform.position;
         lastPos = transform.position;
     }

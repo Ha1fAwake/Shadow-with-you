@@ -1,0 +1,80 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8030068396421068096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8030068396421068102}
+  - component: {fileID: 8030068396421068103}
+  m_Layer: 0
+  m_Name: Stair
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8030068396421068102
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8030068396421068096}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -7.26, y: 1.02, z: -4.6328125}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!68 &8030068396421068103
+EdgeCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8030068396421068096}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_EdgeRadius: 0
+  m_Points:
+  - {x: -1.2841625, y: 0.7253504}
+  - {x: -1.2859688, y: 0.47323632}
+  - {x: -0.6487837, y: 0.47740912}
+  - {x: -0.65373945, y: 0.21190023}
+  - {x: -0.3523836, y: 0.20282722}
+  - {x: -0.3470559, y: -0.02950102}
+  - {x: -0.07200527, y: -0.023965538}
+  - {x: -0.07712126, y: -0.26276684}
+  - {x: 0.20730972, y: -0.25310254}
+  - {x: 0.19475412, y: -0.4723528}
+  - {x: 0.46737432, y: -0.46514452}
+  - {x: 0.47445726, y: -0.6779971}
+  - {x: 0.74091196, y: -0.6690738}
+  - {x: 0.7388582, y: -0.89348173}
+  - {x: 1.6974463, y: -0.9145428}
+  - {x: 1.7032647, y: -0.8485396}
+  - {x: 1.3950343, y: -0.84053934}
+  - {x: 1.3964548, y: -0.6447711}
+  - {x: 1.1307721, y: -0.6499932}
+  - {x: 1.1347475, y: -0.4382351}
+  - {x: 0.8748112, y: -0.44030625}
+  - {x: 0.8786721, y: -0.2270543}
+  - {x: 0.5837631, y: -0.22797728}
+  - {x: 0.58461857, y: 0.018806338}
+  - {x: 0.31512928, y: 0.020147324}
+  - {x: 0.31416607, y: 0.23787153}
+  - {x: 0.03136158, y: 0.23119056}
+  - {x: 0.0345335, y: 0.44323766}
+  - {x: -0.2643404, y: 0.44268334}
+  - {x: -0.26801205, y: 0.72059727}
+  - {x: -1.2774353, y: 0.71881557}

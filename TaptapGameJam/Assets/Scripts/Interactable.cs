@@ -78,15 +78,22 @@ public class Interactable : MonoBehaviour
                 break;
             case itemType.switch1:
                 GetComponent<SwitchBase>().SwitchFunction();
+                canInteract = false;
                 break;
             case itemType.switch2:
                 GetComponent<SwitchBase>().SwitchFunction();
+                canInteract = false;
                 break;
             case itemType.switch3:
-                GetComponent<SwitchBase>().SwitchFunction();
+                GamePlayManager.Instance.deviceMoveSpeed = 1 - GamePlayManager.Instance.deviceMoveSpeed;
+                if(GamePlayManager.Instance.deviceMoveSpeed == 1)
+                {
+                    Camera.main.transform.position += new Vector3(6, 0, 0);
+                }
                 break;
             case itemType.switch4:
                 GetComponent<SwitchBase>().SwitchFunction();
+                canInteract = false;
                 break;
 
         }

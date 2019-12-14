@@ -9,7 +9,11 @@ public class StageControl : MonoBehaviour
     {
         EventCenter.AddListener(MyEventType.startControlShadow,OverTurnTheStage);
     }
-    
+
+    private void OnDestroy()
+    {
+        EventCenter.RemoveListener(MyEventType.startControlShadow, OverTurnTheStage);
+    }
 
     void OverTurnTheStage()
     {

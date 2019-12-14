@@ -308,7 +308,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -450,6 +450,11 @@ MonoBehaviour:
   itemsInLight: {fileID: 0}
   shadow: {fileID: 0}
   fire: {fileID: 0}
+  deviceMoveSpeed: 0
+  device1: {fileID: 0}
+  device2: {fileID: 0}
+  steel: {fileID: 0}
+  steel2: {fileID: 0}
 --- !u!1 &1366089218
 GameObject:
   m_ObjectHideFlags: 1

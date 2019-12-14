@@ -13,6 +13,8 @@ public class Player : MonoBehaviour
     public Transform feetPos;
     public LayerMask whatIsGround;
 
+    public AudioClip walkwav;
+
     public float jumpTime;
     private float jumpTimeCounter;
 
@@ -31,6 +33,8 @@ public class Player : MonoBehaviour
     string curAnimaState = "standby";
     SkeletonAnimation animation;
 
+    bool canControl = true;
+
 
     // Start is called before the first frame update
     void Start()
@@ -43,12 +47,13 @@ public class Player : MonoBehaviour
         animation = GetComponent<SkeletonAnimation>();
         curPos = transform.position;
         lastPos = transform.position;
+        EventCenter.AddListener<bool>(MyEventType.changeController, SetCanControl);
     }
     
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(!GamePlayManager.Instance.isControllingShadow && !GamePlayManager.Instance.isSpiningStage)
+        if(!GamePlayManager.Instance.isControllingShadow && !GamePlayManager.Instance.isSpiningStage && canControl)
         {
             UpdateShadowPos();
             Move();
@@ -57,6 +62,11 @@ public class Player : MonoBehaviour
             InteractSomeThing();
             ControllTorch();
         }
+    }
+
+    void SetCanControl(bool cc)
+    {
+        canControl = cc;
     }
 
     /// <summary>
@@ -176,6 +186,9 @@ public class Player : MonoBehaviour
         float y = Input.GetAxis("Vertical");
         rig.velocity = new Vector2(x * moveSpeed, rig.velocity.y);
         ChangeAnimaState(xInput);
+        //if (xInput > 0.2f)
+        //    AudioSource.PlayClipAtPoint(walkwav, this.transform.position);
+        
         if (x > 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);

@@ -1374,7 +1374,6 @@ MonoBehaviour:
   type: 0
   itemType: 7
   informationType: 0
-  noShadow: {fileID: 0}
 --- !u!61 &502704507
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3206,7 +3205,6 @@ MonoBehaviour:
   type: 0
   itemType: 8
   informationType: 0
-  noShadow: {fileID: 0}
 --- !u!1 &1255357673
 GameObject:
   m_ObjectHideFlags: 0
@@ -3665,7 +3663,6 @@ MonoBehaviour:
   type: 0
   itemType: 5
   informationType: 0
-  noShadow: {fileID: 0}
 --- !u!61 &1415654446
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4435,7 +4432,6 @@ MonoBehaviour:
   type: 0
   itemType: 6
   informationType: 0
-  noShadow: {fileID: 0}
 --- !u!1 &1784412864
 GameObject:
   m_ObjectHideFlags: 0
@@ -4696,7 +4692,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

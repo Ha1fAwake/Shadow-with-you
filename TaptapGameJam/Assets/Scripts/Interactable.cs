@@ -35,8 +35,6 @@ public class Interactable : MonoBehaviour
     public itemType itemType;
     public int informationType;
 
-    public Transform noShadow;
-
     private void Start()
     {
         sign = transform.Find("InteractableSign").gameObject;
@@ -64,8 +62,10 @@ public class Interactable : MonoBehaviour
                     GamePlayManager.Instance.ifHaveMatch = false;
                     canInteract = false;
                     GamePlayManager.Instance.fire.SetActive(true);
-                    GamePlayManager.Instance.shadow.SetActive(false);
+                    //GamePlayManager.Instance.shadow.SetActive(false);
+                    Transform noShadow = GameObject.Find("NoShadow").GetComponent<Transform>();
                     noShadow.DOMoveY(-10, 0.5f);
+                    Camera.main.GetComponent<CameraDark>().x = 1f;
                 }
                 break;
             case itemType.freezerShadow:

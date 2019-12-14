@@ -35,6 +35,7 @@ public class PlayerShadow : MonoBehaviour
     private Transform player;
     private Material material;
 
+    //骨骼动画相关
     SkeletonAnimation animation;
     string curAnimaState = "standby";
 
@@ -64,7 +65,7 @@ public class PlayerShadow : MonoBehaviour
             }
             else
             {
-                transform.Translate(transform.up * 0.1f);
+                transform.Translate(transform.up * 0.001f);
             }
         }
     }

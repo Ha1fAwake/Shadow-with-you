@@ -6,6 +6,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
 {
     public bool isControllingShadow = false;
     public bool isSpiningStage = false;
+    public bool isUsingTorch = false;
     public int stageSpinFrame = 30;
     public float curXScale = 1, curYScale = 1;
 
@@ -34,11 +35,15 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
             EventCenter.Broadcast(MyEventType.startControlShadow);
         }
 
-        if(!isControllingShadow)
+        if(!isControllingShadow && isUsingTorch)
         {
             curYScale = 25f / torch.localPosition.y;
-            itemsInLight.localScale = new Vector3(curYScale, curYScale, 1);
-            shadowRig.transform.localScale = itemsInLight.localScale * 0.1f;
+            foreach(Transform t in itemsInLight)
+            {
+                t.localScale = new Vector3(curYScale, curYScale, 1);
+            }
+            //itemsInLight.localScale = new Vector3(curYScale, curYScale, 1);
+            shadowRig.transform.localScale = new Vector3(curYScale * 0.05f, curYScale * 0.05f, 1);
         }
     }
 

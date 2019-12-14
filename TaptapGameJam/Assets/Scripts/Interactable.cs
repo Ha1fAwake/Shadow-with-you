@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using Fungus;
+using DG.Tweening;
 
 public enum interactType
 {
@@ -30,7 +32,8 @@ public class Interactable : MonoBehaviour
     public interactType type;
     public itemType itemType;
     public int informationType;
-    
+
+    public Transform noShadow;
 
     private void Start()
     {
@@ -44,7 +47,8 @@ public class Interactable : MonoBehaviour
         {
             case itemType.freezer:
                 //触发提示对话
-
+                Flowchart flowchart = GameObject.Find("Flowchart").GetComponent<Flowchart>();
+                flowchart.ExecuteBlock("GetCloseToFreezer");
                 break;
             case itemType.table:
                 //获得火柴
@@ -59,6 +63,7 @@ public class Interactable : MonoBehaviour
                     canInteract = false;
                     GamePlayManager.Instance.fire.SetActive(true);
                     GamePlayManager.Instance.shadow.SetActive(false);
+                    noShadow.DOMoveY(-10, 0.5f);
                 }
                 break;
             case itemType.freezerShadow:

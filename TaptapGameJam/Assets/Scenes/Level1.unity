@@ -926,6 +926,7 @@ MonoBehaviour:
   type: 0
   itemType: 1
   informationType: 0
+  noShadow: {fileID: 0}
 --- !u!1 &534250923
 GameObject:
   m_ObjectHideFlags: 0
@@ -1046,12 +1047,12 @@ PrefabInstance:
     - target: {fileID: 7907540958418866315, guid: 02008b70d6dfa23418a96cd1c2e5061a,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.182
       objectReference: {fileID: 0}
     - target: {fileID: 7907540958418866315, guid: 02008b70d6dfa23418a96cd1c2e5061a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.20000008
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 7907540958418866315, guid: 02008b70d6dfa23418a96cd1c2e5061a,
         type: 3}
@@ -1882,7 +1883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &1028080111
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2324,6 +2325,7 @@ MonoBehaviour:
   type: 0
   itemType: 2
   informationType: 0
+  noShadow: {fileID: 0}
 --- !u!61 &1089789352
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2476,6 +2478,7 @@ MonoBehaviour:
   type: 0
   itemType: 3
   informationType: 0
+  noShadow: {fileID: 0}
 --- !u!114 &1105535998
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2646,7 +2649,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1259055107}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.45, y: -0.88, z: 0}
+  m_LocalPosition: {x: 0.45, y: -0.66, z: 0}
   m_LocalScale: {x: 1.9, y: 1.9, z: 1}
   m_Children: []
   m_Father: {fileID: 1301377964}
@@ -2985,6 +2988,7 @@ MonoBehaviour:
   type: 0
   itemType: 0
   informationType: 0
+  noShadow: {fileID: 0}
 --- !u!1 &1318701382
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,6 +3299,7 @@ MonoBehaviour:
   type: 0
   itemType: 4
   informationType: 0
+  noShadow: {fileID: 0}
 --- !u!61 &1472181878
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3762,7 +3767,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1911737464}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.45, y: 0.88, z: 0}
+  m_LocalPosition: {x: 0.45, y: 0.66, z: 0}
   m_LocalScale: {x: 1.9, y: 1.9, z: 1}
   m_Children: []
   m_Father: {fileID: 1301377964}
@@ -4029,10 +4034,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 1987094263}
-  selectedCommands:
-  - {fileID: 1987094270}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0

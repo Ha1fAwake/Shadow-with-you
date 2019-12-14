@@ -2,11 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum interactType
+{
+    trigger,
+    drag
+}
+
 public class Interactable : MonoBehaviour
 {
     bool isInteracted = false;
     bool canInteract = false;
     GameObject sign;
+    public interactType type;
     public int informationType;
     
 

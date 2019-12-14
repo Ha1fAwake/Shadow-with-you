@@ -11,10 +11,6 @@ public class Shadow : MonoBehaviour
         transform.parent = GamePlayManager.Instance.itemsInLight.transform;
     }
 
-    private void OnTriggerStay2D(Collider2D collision)
-    {
-    }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         transform.parent = GamePlayManager.Instance.shadowWorld;

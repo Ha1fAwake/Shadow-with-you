@@ -47,8 +47,8 @@ public class Interactable : MonoBehaviour
         {
             case itemType.freezer:
                 //触发提示对话
-                Flowchart flowchart = GameObject.Find("Flowchart").GetComponent<Flowchart>();
-                flowchart.ExecuteBlock("GetCloseToFreezer");
+                Flowchart flowchart1 = GameObject.Find("Flowchart").GetComponent<Flowchart>();
+                flowchart1.ExecuteBlock("GetCloseToFreezer");
                 break;
             case itemType.table:
                 //获得火柴
@@ -64,8 +64,10 @@ public class Interactable : MonoBehaviour
                     GamePlayManager.Instance.fire.SetActive(true);
                     //GamePlayManager.Instance.shadow.SetActive(false);
                     Transform noShadow = GameObject.Find("NoShadow").GetComponent<Transform>();
-                    noShadow.DOMoveY(-10, 0.5f);
+                    noShadow.DOMoveY(-10, 0.5f).SetEase(Ease.Linear);
                     Camera.main.GetComponent<CameraDark>().x = 1f;
+                    Flowchart flowchart2 = GameObject.Find("Flowchart").GetComponent<Flowchart>();
+                    flowchart2.ExecuteBlock("Fire");
                 }
                 break;
             case itemType.freezerShadow:

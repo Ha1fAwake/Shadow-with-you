@@ -25,5 +25,6 @@
     endSpinStage,
     endControlShadow,
     stageSpinHalf,
-    playerchangeanime
+    playerchangeanime,
+    changeController
 }

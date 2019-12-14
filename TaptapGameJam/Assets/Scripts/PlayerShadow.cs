@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Spine.Unity;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShadow : Shadow
+public class PlayerShadow : MonoBehaviour
 {
     public float jumpForce;
     public float moveSpeed;
@@ -34,13 +35,18 @@ public class PlayerShadow : Shadow
     private Transform player;
     private Material material;
 
+    SkeletonAnimation animation;
+    string curAnimaState = "standby";
+
 
     // Start is called before the first frame update
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Reality/Player").transform;
-        material = GetComponent<SpriteRenderer>().material;
+        material = GetComponent<MeshRenderer>().material;
+        animation = GetComponent<SkeletonAnimation>();
+        EventCenter.AddListener<int>(MyEventType.playerchangeanime, ChangeAnime);
     }
 
     // Update is called once per frame
@@ -176,15 +182,100 @@ public class PlayerShadow : Shadow
     void Move()
     {
         float x = Input.GetAxis("Horizontal");
+        float xInput = Mathf.Abs(x);
         float y = Input.GetAxis("Vertical");
         rig.velocity = new Vector2(x * moveSpeed * dragRadio, rig.velocity.y);
-        
-        if(dragRadio == 1)
+        ChangeAnimaState(xInput);
+
+        if (dragRadio == 1)
         {
             if (x > 0)
                 transform.eulerAngles = new Vector3(0, 0, 0);
             else if (x < 0)
                 transform.eulerAngles = new Vector3(0, 180, 0);
+        }
+    }
+
+    /// <summary>
+    /// 根据当前关卡和X轴输入改变动画
+    /// </summary>
+    /// <param name="xInput"></param>
+    void ChangeAnimaState(float xInput)
+    {
+        if (xInput == 0 && curAnimaState != "standby")
+        {
+            curAnimaState = "standby";
+            animation.state.SetAnimation(0, "standby", true);
+        }
+        switch (GameManager.Instance.curStage)
+        {
+            case 1:
+                if (xInput > 0 && xInput < 0.5f && curAnimaState != "walk")
+                {
+                    curAnimaState = "walk";
+                    animation.state.SetAnimation(0, "walk", true);
+                }
+                else if (xInput > 0.5f && curAnimaState != "walkfast")
+                {
+                    curAnimaState = "walkfast";
+                    animation.state.SetAnimation(0, "walkfast", true);
+                }
+                break;
+            case 2:
+                if (xInput > 0 && xInput < 0.5f && curAnimaState != "walk")
+                {
+                    curAnimaState = "walk";
+                    animation.state.SetAnimation(0, "walkcarefull", true);
+                }
+                else if (xInput > 0.5f && curAnimaState != "walkfast")
+                {
+                    curAnimaState = "walkfast";
+                    animation.state.SetAnimation(0, "walkfast", true);
+                }
+                break;
+            case 3:
+                if (xInput > 0 && xInput < 0.5f && curAnimaState != "walk")
+                {
+                    curAnimaState = "walk";
+                    animation.state.SetAnimation(0, "walkcarefull", true);
+                }
+                else if (xInput > 0.5f && curAnimaState != "walkfast")
+                {
+                    curAnimaState = "walkfast";
+                    animation.state.SetAnimation(0, "walkfast", true);
+                }
+                break;
+            case 4:
+                if (xInput > 0 && curAnimaState != "walk")
+                {
+                    curAnimaState = "walk";
+                    animation.state.SetAnimation(0, "walkold", true);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
+    void ChangeAnime(int index)
+    {
+        switch(index)
+        {
+            case 0:
+                animation.state.SetAnimation(0, "standby", true);
+                break;
+            case 1:
+                animation.state.SetAnimation(0, "walk", true);
+                break;
+            case 2:
+                animation.state.SetAnimation(0, "walkfast", true);
+                break;
+            case 3:
+                animation.state.SetAnimation(0, "walkcarefull", true);
+                break;
+            case 4:
+                animation.state.SetAnimation(0, "walkold", true);
+                break;
         }
     }
 }

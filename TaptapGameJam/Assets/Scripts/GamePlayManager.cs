@@ -17,7 +17,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
         reality = GameObject.Find("Reality").transform;
         shadowWorld = GameObject.Find("ShadowWorld").transform;
         playerRig = GameObject.Find(reality.name + "/Player").GetComponent<Rigidbody2D>();
-        shadowRig = GameObject.Find(shadowWorld.name + "/Player").GetComponent<Rigidbody2D>();
+        shadowRig = GameObject.Find("PlayerShadow").GetComponent<Rigidbody2D>();
         itemsInLight = GameObject.Find(shadowWorld.name + "/ItemsInLight").transform;
         torch = GameObject.Find(playerRig.transform.name + "/Torch").transform;
     }
@@ -36,8 +36,9 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
 
         if(!isControllingShadow)
         {
-            curYScale = 0.5f / torch.localPosition.y;
+            curYScale = 25f / torch.localPosition.y;
             itemsInLight.localScale = new Vector3(curYScale, curYScale, 1);
+            shadowRig.transform.localScale = itemsInLight.localScale * 0.1f;
         }
     }
 

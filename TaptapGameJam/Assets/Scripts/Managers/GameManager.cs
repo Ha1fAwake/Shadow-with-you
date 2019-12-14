@@ -36,7 +36,7 @@ public class GameManager : TMonoSingleton<GameManager>,IInitializable
     GameObject startPanel, endPanel, informationPanel;
     List<GameObject> panelList;
 
-    public int curStage = 0;
+    public int curStage = 1;
 
     public void Init()
     {
@@ -53,17 +53,17 @@ public class GameManager : TMonoSingleton<GameManager>,IInitializable
     {
         if(Input.GetKeyDown(KeyCode.T))
         {
-            GeneABrick(Global.GetRandomV3(-2, -4, 2, 4, 0, 0), 0);
+            //GeneABrick(Global.GetRandomV3(-2, -4, 2, 4, 0, 0), 0);
         }
         if (Input.GetKeyDown(KeyCode.S))
         {
-            SaveByXml("SaveData");
+            //SaveByXml("SaveData");
             //SaveByJson("SaveData");
         }
         if (Input.GetKeyDown(KeyCode.L))
         {
-            StageData data = LoadByXml("SaveData");
-            GeneStageWithData(data);
+            //StageData data = LoadByXml("SaveData");
+            //GeneStageWithData(data);
         }
     }
 

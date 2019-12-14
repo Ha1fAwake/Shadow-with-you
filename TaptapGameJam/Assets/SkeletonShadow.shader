@@ -1,4 +1,4 @@
-Shader "Spine/Skeleton" {
+﻿Shader "Spine/SkeletonShadow" {
 	Properties {
 		_Cutoff ("Shadow alpha cutoff", Range(0,1)) = 0.1
 		_Alpha ("Alpha", Range(0,1)) = 1
@@ -71,6 +71,7 @@ Shader "Spine/Skeleton" {
 				#endif
 
 				fixed4 color = texColor * i.vertexColor;
+				color.a = _Alpha;
 				return color;
 			}
 			ENDCG

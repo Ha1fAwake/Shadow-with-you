@@ -24,5 +24,6 @@
     startControlShadow,
     endSpinStage,
     endControlShadow,
-    stageSpinHalf
+    stageSpinHalf,
+    playerchangeanime
 }

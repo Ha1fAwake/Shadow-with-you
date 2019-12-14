@@ -27,6 +27,9 @@ public class Player : MonoBehaviour
     Transform shadow,torch;
     Rigidbody2D shadowRig;
 
+    string curAnimaState = "standby";
+    SkeletonAnimation animation;
+
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +38,7 @@ public class Player : MonoBehaviour
         shadowRig = GamePlayManager.Instance.shadowRig;
         shadow = shadowRig.transform;
         rig = GetComponent<Rigidbody2D>();
+        animation = GetComponent<SkeletonAnimation>();
         curPos = transform.position;
         lastPos = transform.position;
     }
@@ -122,12 +126,88 @@ public class Player : MonoBehaviour
     void Move()
     {
         float x = Input.GetAxis("Horizontal");
+        float xInput = Mathf.Abs(x);
         float y = Input.GetAxis("Vertical");
         rig.velocity = new Vector2(x * moveSpeed, rig.velocity.y);
-
+        ChangeAnimaState(xInput);
         if (x > 0)
+        {
             transform.eulerAngles = new Vector3(0, 0, 0);
+            shadow.transform.eulerAngles = new Vector3(0, 180, 180);
+        }
         else if (x < 0)
+        {
             transform.eulerAngles = new Vector3(0, 180, 0);
+            shadow.transform.eulerAngles = new Vector3(0, 0, 180);
+        }
+    }
+
+    /// <summary>
+    /// 根据当前关卡和X轴输入改变动画
+    /// </summary>
+    /// <param name="xInput"></param>
+    void ChangeAnimaState(float xInput)
+    {
+        if(xInput == 0 && curAnimaState != "standby")
+        {
+            curAnimaState = "standby";
+            animation.state.SetAnimation(0, "standby", true);
+            EventCenter.Broadcast<int>(MyEventType.playerchangeanime, 0);
+        }
+        switch(GameManager.Instance.curStage)
+        {
+            case 1:
+                if (xInput > 0 && xInput < 0.5f && curAnimaState != "walk")
+                {
+                    curAnimaState = "walk";
+                    animation.state.SetAnimation(0, "walk", true);
+                    EventCenter.Broadcast<int>(MyEventType.playerchangeanime, 1);
+                }
+                else if (xInput > 0.5f && curAnimaState != "walkfast")
+                {
+                    curAnimaState = "walkfast";
+                    animation.state.SetAnimation(0, "walkfast", true);
+                    EventCenter.Broadcast<int>(MyEventType.playerchangeanime, 2);
+                }
+                break;
+            case 2:
+                if (xInput > 0 && xInput < 0.5f && curAnimaState != "walk")
+                {
+                    curAnimaState = "walk";
+                    animation.state.SetAnimation(0, "walkcarefull", true);
+                    EventCenter.Broadcast<int>(MyEventType.playerchangeanime, 1);
+                }
+                else if (xInput > 0.5f && curAnimaState != "walkfast")
+                {
+                    curAnimaState = "walkfast";
+                    animation.state.SetAnimation(0, "walkfast", true);
+                    EventCenter.Broadcast<int>(MyEventType.playerchangeanime, 2);
+                }
+                break;
+            case 3:
+                if (xInput > 0 && xInput < 0.5f && curAnimaState != "walk")
+                {
+                    curAnimaState = "walk";
+                    animation.state.SetAnimation(0, "walkcarefull", true);
+                    EventCenter.Broadcast<int>(MyEventType.playerchangeanime, 1);
+                }
+                else if (xInput > 0.5f && curAnimaState != "walkfast")
+                {
+                    curAnimaState = "walkfast";
+                    animation.state.SetAnimation(0, "walkfast", true);
+                    EventCenter.Broadcast<int>(MyEventType.playerchangeanime, 2);
+                }
+                break;
+            case 4:
+                if (xInput > 0 && curAnimaState != "walk")
+                {
+                    curAnimaState = "walk";
+                    animation.state.SetAnimation(0, "walkold", true);
+                    EventCenter.Broadcast<int>(MyEventType.playerchangeanime, 1);
+                }
+                break;
+            default:
+                break;
+        }
     }
 }

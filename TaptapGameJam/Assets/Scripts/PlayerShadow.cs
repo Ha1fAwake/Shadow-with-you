@@ -178,7 +178,7 @@ public class PlayerShadow : Shadow
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         rig.velocity = new Vector2(x * moveSpeed * dragRadio, rig.velocity.y);
-
+        
         if(dragRadio == 1)
         {
             if (x > 0)

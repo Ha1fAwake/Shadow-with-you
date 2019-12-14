@@ -26,7 +26,6 @@ public class Player : MonoBehaviour
     Vector3 curPos, lastPos;
     Transform shadow,torch;
     Rigidbody2D shadowRig;
-    SkeletonAnimation animation;
 
 
     // Start is called before the first frame update
@@ -36,7 +35,6 @@ public class Player : MonoBehaviour
         shadowRig = GamePlayManager.Instance.shadowRig;
         shadow = shadowRig.transform;
         rig = GetComponent<Rigidbody2D>();
-        animation = GetComponent<SkeletonAnimation>();
         curPos = transform.position;
         lastPos = transform.position;
     }
@@ -126,6 +124,7 @@ public class Player : MonoBehaviour
         float x = Input.GetAxis("Horizontal");
         float y = Input.GetAxis("Vertical");
         rig.velocity = new Vector2(x * moveSpeed, rig.velocity.y);
+
         if (x > 0)
             transform.eulerAngles = new Vector3(0, 0, 0);
         else if (x < 0)

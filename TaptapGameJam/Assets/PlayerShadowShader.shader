@@ -1,4 +1,4 @@
-﻿Shader "Custom/ShadowShader"
+﻿Shader "Custom/PlayerShadowShader"
 {
     Properties
     {
@@ -12,6 +12,7 @@
 
         Pass
         {
+			blend one SrcAlpha
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -46,6 +47,7 @@
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // just invert the colors
                 col.rgb = 1 - col.rgb;
+				col.a = _Alpha;
                 return col;
             }
             ENDCG

@@ -36,6 +36,8 @@ public class GameManager : TMonoSingleton<GameManager>,IInitializable
     GameObject startPanel, endPanel, informationPanel;
     List<GameObject> panelList;
 
+    public int curStage = 0;
+
     public void Init()
     {
         canvas = GameObject.Find("Canvas");

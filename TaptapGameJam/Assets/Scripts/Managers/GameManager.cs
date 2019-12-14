@@ -12,10 +12,7 @@ using Random = UnityEngine.Random;
 enum PanelType
 {
     Start,
-    Option,
-    GameOver,
-    Information,
-    CountDown
+    GamePlay
 }
 
 enum curState
@@ -41,7 +38,7 @@ public class GameManager : TMonoSingleton<GameManager>,IInitializable
     public void Init()
     {
         canvas = GameObject.Find("Canvas");
-        bricksObject = GameObject.Find("Bricks");
+        DontDestroyOnLoad(canvas);
         panelList = new List<GameObject>();
         FindPanels();
         EventCenter.AddListener<bool>(MyEventType.stageOver, GameOver);
@@ -51,25 +48,21 @@ public class GameManager : TMonoSingleton<GameManager>,IInitializable
 
     private void Update()
     {
-        if(Input.GetKeyDown(KeyCode.T))
-        {
-            //GeneABrick(Global.GetRandomV3(-2, -4, 2, 4, 0, 0), 0);
-        }
-        if (Input.GetKeyDown(KeyCode.S))
-        {
-            //SaveByXml("SaveData");
-            //SaveByJson("SaveData");
-        }
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            //StageData data = LoadByXml("SaveData");
-            //GeneStageWithData(data);
-        }
     }
 
     private void FixedUpdate()
     {
         AllBricksMoveRepeatly();
+    }
+
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if(level != 0)
+        {
+            panelList[0].transform.localPosition = new Vector3(2333, 2333, 0);
+            panelList[1].transform.localPosition = Vector3.zero;
+        }
     }
 
     /// <summary>

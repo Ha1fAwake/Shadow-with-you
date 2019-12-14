@@ -13,20 +13,17 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
     public Rigidbody2D playerRig, shadowRig;
     public Transform reality, shadowWorld, torch,itemsInLight;
 
+    bool isInGameScene = false;
+
     public void Init()
     {
-        reality = GameObject.Find("Reality").transform;
-        shadowWorld = GameObject.Find("ShadowWorld").transform;
-        playerRig = GameObject.Find(reality.name + "/Player").GetComponent<Rigidbody2D>();
-        shadowRig = GameObject.Find("PlayerShadow").GetComponent<Rigidbody2D>();
-        itemsInLight = GameObject.Find(shadowWorld.name + "/ItemsInLight").transform;
-        torch = GameObject.Find(playerRig.transform.name + "/Torch").transform;
+
     }
 
     private void Update()
     {
         //旋转关卡，在影子和爱丽丝之间切换
-        if(Input.GetKeyDown(KeyCode.Tab) && !isSpiningStage)
+        if(Input.GetKeyDown(KeyCode.Tab) && !isSpiningStage && isInGameScene)
         {
             isControllingShadow = !isControllingShadow;
             playerRig.constraints = RigidbodyConstraints2D.FreezeAll;
@@ -35,7 +32,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
             EventCenter.Broadcast(MyEventType.startControlShadow);
         }
 
-        if(!isControllingShadow && isUsingTorch)
+        if(!isControllingShadow && isUsingTorch && isInGameScene)
         {
             curYScale = 25f / torch.localPosition.y;
             foreach(Transform t in itemsInLight)
@@ -45,6 +42,25 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
             //itemsInLight.localScale = new Vector3(curYScale, curYScale, 1);
             shadowRig.transform.localScale = new Vector3(curYScale * 0.05f, curYScale * 0.05f, 1);
         }
+    }
+
+    private void OnLevelWasLoaded(int level)
+    {
+        if(level != 0)
+        {
+            isInGameScene = true;
+            LoadPlayerAndOtherThings();
+        }
+    }
+
+    void LoadPlayerAndOtherThings()
+    {
+        reality = GameObject.Find("Reality").transform;
+        shadowWorld = GameObject.Find("ShadowWorld").transform;
+        playerRig = GameObject.Find(reality.name + "/Player").GetComponent<Rigidbody2D>();
+        shadowRig = GameObject.Find("PlayerShadow").GetComponent<Rigidbody2D>();
+        itemsInLight = GameObject.Find(shadowWorld.name + "/ItemsInLight").transform;
+        torch = GameObject.Find(playerRig.transform.name + "/Torch").transform;
     }
 
     /// <summary>

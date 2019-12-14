@@ -26,7 +26,6 @@ public class ButtonManager : MonoBehaviour
                 EventCenter.Broadcast<int>(MyEventType.enterStage,0);
                 break;
             case "optionbtn":
-                GameManager.Instance.OpenPanel((int)PanelType.Option);
                 break;
             case "exitbtn":
 

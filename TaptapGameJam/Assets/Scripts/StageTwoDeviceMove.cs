@@ -7,6 +7,6 @@ public class StageTwoDeviceMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(GamePlayManager.Instance.deviceMoveSpeed*0.01f,0,0);
+        transform.Translate(GamePlayManager.Instance.deviceMoveSpeed*0.002f,0,0);
     }
 }

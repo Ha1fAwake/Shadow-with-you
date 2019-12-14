@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BrightnessSaturationAndContrast : PostEffectBase
+public class CameraDark : PostEffectBase
 {
     public Shader briSatConShader;
     public Texture tex1,tex2;

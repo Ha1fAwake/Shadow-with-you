@@ -40,10 +40,6 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
         if(!isControllingShadow && isUsingTorch && isInGameScene)
         {
             curYScale = 35f / torch.localPosition.y;
-            /*foreach(Transform t in itemsInLight)
-            {
-                t.localScale = new Vector3(curYScale, curYScale, 1);
-            }*/
             itemsInLight.localScale = new Vector3(curYScale, curYScale, 1);
             shadowRig.transform.localScale = new Vector3(curYScale * 0.05f, curYScale * 0.05f, 1);
         }
@@ -63,7 +59,12 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
             fire = GameObject.Find("Fire");
             fire.SetActive(false);
         }
-        if (level == 1)
+        if (level == 2)
+        {
+            device1 = GameObject.Find("Device");
+            device2 = GameObject.Find("Device2");
+        }
+        if (level == 3)
         {
             device1 = GameObject.Find("Device");
             device2 = GameObject.Find("Device2");

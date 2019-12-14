@@ -22,6 +22,8 @@ public enum itemType
     switch2,
     switch3,
     switch4,
+    steel,
+    rock
 }
 
 public class Interactable : MonoBehaviour
@@ -100,6 +102,14 @@ public class Interactable : MonoBehaviour
                 GetComponent<SwitchBase>().SwitchFunction();
                 canInteract = false;
                 break;
+            case itemType.steel:
+                GamePlayManager.Instance.steel.SetActive(false);
+                GamePlayManager.Instance.steel2.SetActive(false);
+                break;
+            case itemType.rock:
+
+                break;
+
 
         }
     }

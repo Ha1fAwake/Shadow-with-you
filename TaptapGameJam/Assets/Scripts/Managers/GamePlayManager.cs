@@ -17,6 +17,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
     public GameObject shadow, fire;
     public float deviceMoveSpeed = 0;
     public GameObject device1, device2;
+    public GameObject steel, steel2;
 
     bool isInGameScene = false;
 
@@ -66,8 +67,8 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
         }
         if (level == 3)
         {
-            device1 = GameObject.Find("Device");
-            device2 = GameObject.Find("Device2");
+            steel = GameObject.Find("Steel");
+            steel2 = GameObject.Find("Steel2");
         }
     }
 

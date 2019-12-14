@@ -35,6 +35,7 @@ public class GameManager : TMonoSingleton<GameManager>,IInitializable
 
     public int curStage = 1;
 
+
     public void Init()
     {
         canvas = GameObject.Find("Canvas");
@@ -58,6 +59,7 @@ public class GameManager : TMonoSingleton<GameManager>,IInitializable
 
     private void OnLevelWasLoaded(int level)
     {
+        curStage = level;
         if(level != 0)
         {
             panelList[0].transform.localPosition = new Vector3(2333, 2333, 0);

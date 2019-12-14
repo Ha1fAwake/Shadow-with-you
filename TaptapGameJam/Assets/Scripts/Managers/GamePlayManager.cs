@@ -15,6 +15,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
     public Transform reality, shadowWorld, torch,itemsInLight;
 
     public GameObject shadow, fire;
+    public GameObject device1, device2;
 
     bool isInGameScene = false;
 
@@ -59,6 +60,11 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
             shadow = GameObject.Find("NoShadow");
             fire = GameObject.Find("Fire");
             fire.SetActive(false);
+        }
+        if (level == 1)
+        {
+            device1 = GameObject.Find("Device");
+            device2 = GameObject.Find("Device2");
         }
     }
 

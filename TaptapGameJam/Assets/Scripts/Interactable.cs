@@ -15,7 +15,11 @@ public enum itemType
     table,
     fireplace,
     freezerShadow,
-    door
+    door,
+    switch1,
+    switch2,
+    switch3,
+    switch4,
 }
 
 public class Interactable : MonoBehaviour
@@ -71,6 +75,18 @@ public class Interactable : MonoBehaviour
                     //加载第二关
                     SceneManager.LoadScene(2);
                 }
+                break;
+            case itemType.switch1:
+                GetComponent<SwitchBase>().SwitchFunction();
+                break;
+            case itemType.switch2:
+                GetComponent<SwitchBase>().SwitchFunction();
+                break;
+            case itemType.switch3:
+                GetComponent<SwitchBase>().SwitchFunction();
+                break;
+            case itemType.switch4:
+                GetComponent<SwitchBase>().SwitchFunction();
                 break;
 
         }

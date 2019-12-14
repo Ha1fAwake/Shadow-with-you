@@ -19,10 +19,11 @@ public class Player : MonoBehaviour
     private bool isJumpingFirstTime;
     private int curJumpNum = 0;
     
-    private bool isGround, isJumping, isUsingTorch = false;
+    private bool isGround, isJumping, isUsingTorch = false, canInteract = false;
     private Rigidbody2D rig;
+    private Interactable interactable = null;
 
-    public float minTorchHeight, maxTorchHeight;
+    public float minTorchHeight, maxTorchHeight, bodyWidthOffset = 0.26f;
     Vector3 curPos, lastPos;
     Transform shadow,torch;
     Rigidbody2D shadowRig;
@@ -52,7 +53,50 @@ public class Player : MonoBehaviour
             UpdateShadowPos();
             Move();
             Jump();
+            PhysicCheck();
+            InteractSomeThing();
             ControllTorch();
+        }
+    }
+
+    /// <summary>
+    /// 判断面前是否有可交互物体
+    /// </summary>
+    private void PhysicCheck()
+    {
+        Vector3 offset = new Vector3(bodyWidthOffset * transform.right.x, 0.6f, 0);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + offset, transform.right, 0.3f, 1 << LayerMask.NameToLayer("Interactable"));
+        if (hit)
+        {
+            interactable = hit.transform.GetComponent<Interactable>();
+            interactable.SetInteractableSign(true);
+            canInteract = true;
+            Debug.DrawRay(transform.position + offset, transform.right, Color.red, 0.15f);
+        }
+        else
+        {
+            if (interactable != null)
+            {
+                interactable.SetInteractableSign(false);
+            }
+            canInteract = false;
+            Debug.DrawRay(transform.position + offset, transform.right, Color.green, 0.15f);
+        }
+    }
+
+    private void InteractSomeThing()
+    {
+        if (Input.GetKeyDown(KeyCode.F) && canInteract)
+        {
+            interactable.SetInteractableSign(false);
+            switch (interactable.type)
+            {
+                case interactType.trigger:
+                    interactable.TriggerItem();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 
@@ -83,7 +127,6 @@ public class Player : MonoBehaviour
         curPos = transform.position;
         Vector3 delta = curPos - lastPos;
         Vector3 shadowMoveDelta = new Vector3(delta.x, -delta.y, delta.z);
-        Debug.Log(shadowMoveDelta);
         shadow.position += shadowMoveDelta;
         lastPos = curPos;
     }

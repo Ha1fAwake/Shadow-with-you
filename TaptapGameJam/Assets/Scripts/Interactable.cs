@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public enum interactType
 {
@@ -8,12 +9,22 @@ public enum interactType
     drag
 }
 
+public enum itemType
+{
+    freezer,
+    table,
+    fireplace,
+    freezerShadow,
+    door
+}
+
 public class Interactable : MonoBehaviour
 {
     bool isInteracted = false;
-    bool canInteract = false;
+    bool canInteract = true;
     GameObject sign;
     public interactType type;
+    public itemType itemType;
     public int informationType;
     
 
@@ -25,11 +36,51 @@ public class Interactable : MonoBehaviour
     
     public void TriggerItem()
     {
-        Debug.Log("Trigger:" + name);
+        switch(itemType)
+        {
+            case itemType.freezer:
+                //触发提示对话
+
+                break;
+            case itemType.table:
+                //获得火柴
+                GamePlayManager.Instance.ifHaveMatch = true;
+                canInteract = false;
+                break;
+            case itemType.fireplace:
+                //失去火柴 火焰升起
+                if(GamePlayManager.Instance.ifHaveMatch)
+                {
+                    GamePlayManager.Instance.ifHaveMatch = false;
+                    canInteract = false;
+                    GamePlayManager.Instance.fire.SetActive(true);
+                    GamePlayManager.Instance.shadow.SetActive(false);
+                }
+                break;
+            case itemType.freezerShadow:
+                //获得钥匙
+                GamePlayManager.Instance.ifHaveNormalKey = true;
+                canInteract = false;
+                break;
+            case itemType.door:
+                //获得钥匙
+                if (GamePlayManager.Instance.ifHaveNormalKey)
+                {
+                    GamePlayManager.Instance.ifHaveNormalKey = false;
+                    canInteract = false;
+                    //加载第二关
+                    SceneManager.LoadScene(2);
+                }
+                break;
+
+        }
     }
 
     public void SetInteractableSign(bool active)
     {
-        sign.SetActive(active);
+        if(canInteract)
+        {
+            sign.SetActive(active);
+        }
     }
 }

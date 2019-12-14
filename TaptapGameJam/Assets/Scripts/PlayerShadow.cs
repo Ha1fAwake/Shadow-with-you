@@ -45,6 +45,7 @@ public class PlayerShadow : MonoBehaviour
     {
         rig = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Reality/Player").transform;
+        SetOpposedPosToPlayer();
         material = GetComponent<MeshRenderer>().material;
         animation = GetComponent<SkeletonAnimation>();
         EventCenter.AddListener<int>(MyEventType.playerchangeanime, ChangeAnime);
@@ -69,6 +70,12 @@ public class PlayerShadow : MonoBehaviour
             }
         }
     }
+    
+    private void SetOpposedPosToPlayer()
+    {
+        float y = -player.position.y;
+        transform.position = new Vector3(player.position.x, y, player.position.z);
+    }
 
     /// <summary>
     /// 根据影子与本体之间的距离计算能量
@@ -91,7 +98,7 @@ public class PlayerShadow : MonoBehaviour
     /// </summary>
     private void PhysicCheck()
     {
-        Vector3 offset = new Vector3(bodyWidthOffset * transform.right.x, 0, 0);
+        Vector3 offset = new Vector3(bodyWidthOffset * transform.right.x, 0.6f, 0);
         RaycastHit2D hit = Physics2D.Raycast(transform.position + offset, transform.right, 0.3f, 1 << LayerMask.NameToLayer("Interactable"));
         if(hit)
         {
@@ -127,6 +134,9 @@ public class PlayerShadow : MonoBehaviour
                     fixedJoint.connectedBody = rig;
                     canInteract = false;
                     dragRadio = 0.3f;
+                    break;
+                case interactType.trigger:
+                    interactable.TriggerItem();
                     break;
                 default:
                     break;

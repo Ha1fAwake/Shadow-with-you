@@ -30,9 +30,9 @@ public class Player : MonoBehaviour
     void Start()
     {
         torch = GameObject.Find(name + "/Torch").transform;
-        shadow = GameObject.Find("PlayerShadow").transform;
+        shadowRig = GamePlayManager.Instance.shadowRig;
+        shadow = shadowRig.transform;
         rig = GetComponent<Rigidbody2D>();
-        shadowRig = shadow.GetComponent<Rigidbody2D>();
         curPos = transform.position;
         lastPos = transform.position;
     }
@@ -48,25 +48,34 @@ public class Player : MonoBehaviour
             ControllTorch();
         }
     }
-    
+
     private void ControllTorch()
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
 
         }
-        float y = Input.GetAxis("Vertical") * torch.up.y + curPos.y;
-        y = Mathf.Clamp(y, minTorchHeight, maxTorchHeight);
-        torch.transform.position = new Vector3(curPos.x, y, curPos.z);
-    }
 
+        float inputY = 0.03f;
+        if (Input.GetKey(KeyCode.W) && torch.localPosition.y <= maxTorchHeight)
+        {
+            torch.Translate(transform.up * inputY);
+        }
+        if (Input.GetKey(KeyCode.S) && torch.localPosition.y >= minTorchHeight)
+        {
+            inputY *= -1;
+            torch.Translate(transform.up * inputY);
+        }
+        float scaleSize = 0.5f / torch.localPosition.y;
+        shadow.localScale = new Vector3(scaleSize, scaleSize, 1);
+    }
 
     private void UpdateShadowPos()
     {
         curPos = transform.position;
         Vector3 delta = curPos - lastPos;
         Vector3 shadowMoveDelta = new Vector3(delta.x, -delta.y, delta.z);
-        shadow.transform.position += shadowMoveDelta;
+        shadow.position += shadowMoveDelta;
         lastPos = curPos;
     }
 

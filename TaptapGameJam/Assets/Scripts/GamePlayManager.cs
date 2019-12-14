@@ -7,17 +7,24 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
     public bool isControllingShadow = false;
     public bool isSpiningStage = false;
     public int stageSpinFrame = 30;
+    public float curXScale = 1, curYScale = 1;
 
-    Rigidbody2D playerRig, shadowRig;
+    public Rigidbody2D playerRig, shadowRig;
+    public Transform reality, shadowWorld, torch,itemsInLight;
 
     public void Init()
     {
-        playerRig = GameObject.Find("Player").GetComponent<Rigidbody2D>();
-        shadowRig = GameObject.Find("PlayerShadow").GetComponent<Rigidbody2D>();
+        reality = GameObject.Find("Reality").transform;
+        shadowWorld = GameObject.Find("ShadowWorld").transform;
+        playerRig = GameObject.Find(reality.name + "/Player").GetComponent<Rigidbody2D>();
+        shadowRig = GameObject.Find(shadowWorld.name + "/Player").GetComponent<Rigidbody2D>();
+        itemsInLight = GameObject.Find(shadowWorld.name + "/ItemsInLight").transform;
+        torch = GameObject.Find(playerRig.transform.name + "/Torch").transform;
     }
 
     private void Update()
     {
+        //旋转关卡，在影子和爱丽丝之间切换
         if(Input.GetKeyDown(KeyCode.Tab) && !isSpiningStage)
         {
             isControllingShadow = !isControllingShadow;
@@ -25,6 +32,12 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
             shadowRig.constraints = RigidbodyConstraints2D.FreezeAll;
             isSpiningStage = true;
             EventCenter.Broadcast(MyEventType.startControlShadow);
+        }
+
+        if(!isControllingShadow)
+        {
+            curYScale = 0.5f / torch.localPosition.y;
+            itemsInLight.localScale = new Vector3(curYScale, curYScale, 1);
         }
     }
 
@@ -41,7 +54,6 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
         float targetX = playerRig.transform.position.x;
         Vector3 tempPos = shadowRig.transform.position;
         shadowRig.transform.position = new Vector3(targetX, tempPos.y, tempPos.z);
-        //StartCoroutine(StartAdjustShadowPos());
 
     }
 

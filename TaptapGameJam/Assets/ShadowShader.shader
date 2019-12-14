@@ -3,6 +3,7 @@
     Properties
     {
         _MainTex ("Texture", 2D) = "white" {}
+		_Alpha ("Alpha", Range(0,1)) = 1
     }
     SubShader
     {
@@ -11,6 +12,7 @@
 
         Pass
         {
+			blend one SrcAlpha
             CGPROGRAM
             #pragma vertex vert
             #pragma fragment frag
@@ -38,12 +40,14 @@
             }
 
             sampler2D _MainTex;
+			float _Alpha;
 
             fixed4 frag (v2f i) : SV_Target
             {
                 fixed4 col = tex2D(_MainTex, i.uv);
                 // just invert the colors
                 col.rgb = 1 - col.rgb;
+				col.a = _Alpha;
                 return col;
             }
             ENDCG

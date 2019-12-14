@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShadow : MonoBehaviour
+public class PlayerShadow : Shadow
 {
     public float jumpForce;
     public float moveSpeed;
@@ -17,10 +17,11 @@ public class PlayerShadow : MonoBehaviour
 
     private bool isJumpingFirstTime;
     private int curJumpNum = 0;
-    
-    private bool isGround, isJumping;
+
+    private bool isGround, isJumping, canInteract = false;
     private float handHeight = 0.5f, headHeight = 1f, bodyWidthOffset = 0.26f;
     private Rigidbody2D rig;
+    private Interactable interactable = null;
 
 
     // Start is called before the first frame update
@@ -32,35 +33,49 @@ public class PlayerShadow : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if(GamePlayManager.Instance.isControllingShadow)
+        if (!GamePlayManager.Instance.isSpiningStage)
         {
-            Move();
-            Jump();
-            PhysicCheck();
-            InteractSomeThing();
+            if (GamePlayManager.Instance.isControllingShadow)
+            {
+                Move();
+                Jump();
+                PhysicCheck();
+                InteractSomeThing();
+            }
+            else
+            {
+                transform.Translate(transform.up * 0.1f);
+            }
         }
     }
 
     private void PhysicCheck()
     {
         Vector3 offset = new Vector3(bodyWidthOffset * transform.right.x, 0, 0);
-        RaycastHit2D hit = Physics2D.Raycast(transform.position + offset, transform.right, 0.2f);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position + offset, transform.right, 0.3f, 1 << LayerMask.NameToLayer("Interactable"));
         if(hit)
         {
-            Debug.Log(hit.collider.name);
-            Debug.DrawRay(transform.position + offset, transform.right, Color.red, 0.2f);
+            interactable = hit.transform.GetComponent<Interactable>();
+            interactable.SetInteractableSign(true);
+            canInteract = true;
+            Debug.DrawRay(transform.position + offset, transform.right, Color.red, 0.15f);
         }
         else
         {
-            Debug.DrawRay(transform.position + offset, transform.right, Color.green, 0.2f);
+            if(interactable != null)
+            {
+                interactable.SetInteractableSign(false);
+            }
+            canInteract = false;
+            Debug.DrawRay(transform.position + offset, transform.right, Color.green, 0.15f);
         }
     }
 
     private void InteractSomeThing()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.F) && canInteract)
         {
-
+            interactable.TriggerItem();
         }
     }
 

@@ -6,7 +6,7 @@ public class InteractiveSignMove : MonoBehaviour
 {
     int sign = 1;
     float radio = 0;
-    float moveSpeed = 0.1f;
+    float moveSpeed = 0.05f;
     public Vector3 startPos = new Vector3(0, -0.75f, 0);
     public Vector3 offset = new Vector3(0, -0.15f, 0);
     // Update is called once per frame

@@ -1545,6 +1545,16 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1277708062401187314, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277708062401187314, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1277708062522706358, guid: 8b37ad43b5d7835419a20efed7b5609b,
         type: 3}
       propertyPath: m_LocalPosition.x

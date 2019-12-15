@@ -878,6 +878,16 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 1277708062401187314, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277708062401187314, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1277708062522706359, guid: 8b37ad43b5d7835419a20efed7b5609b,
         type: 3}
       propertyPath: m_Mesh
@@ -4958,10 +4968,8 @@ MonoBehaviour:
     y: -340
     width: 1114
     height: 859
-  selectedBlocks:
-  - {fileID: 2114912409}
-  selectedCommands:
-  - {fileID: 2114912411}
+  selectedBlocks: []
+  selectedCommands: []
   variables: []
   description: 
   stepPause: 0

@@ -18,6 +18,7 @@ public enum itemType
     fireplace,
     freezerShadow,
     door,
+    doorshadow,
     switch1,
     switch2,
     switch3,
@@ -34,6 +35,7 @@ public class Interactable : MonoBehaviour
     public interactType type;
     public itemType itemType;
     public int informationType;
+    int interTime = 0;
 
     private void Start()
     {
@@ -76,13 +78,18 @@ public class Interactable : MonoBehaviour
                 canInteract = false;
                 break;
             case itemType.door:
-                //获得钥匙
-                if (GamePlayManager.Instance.ifHaveNormalKey)
+                if (GamePlayManager.Instance.ifdDoorUnlocked)
                 {
-                    GamePlayManager.Instance.ifHaveNormalKey = false;
-                    canInteract = false;
                     //加载第二关
                     SceneManager.LoadScene(2);
+                }
+                break;
+            case itemType.doorshadow:
+                //获得钥匙
+                if (GamePlayManager.Instance.ifHaveNormalKey && !GamePlayManager.Instance.ifdDoorUnlocked)
+                {
+                    GamePlayManager.Instance.ifdDoorUnlocked = true;
+                    canInteract = false;
                 }
                 break;
             case itemType.switch1:
@@ -94,10 +101,14 @@ public class Interactable : MonoBehaviour
                 canInteract = false;
                 break;
             case itemType.switch3:
-                GamePlayManager.Instance.deviceMoveSpeed = 1 - GamePlayManager.Instance.deviceMoveSpeed;
-                if(GamePlayManager.Instance.deviceMoveSpeed == 1)
+                interTime = (interTime + 1) % 2;
+                if(interTime == 1)
                 {
-                    Camera.main.transform.position += new Vector3(6, 0, 0);
+                    GamePlayManager.Instance.deviceMoveSpeed = 1 - GamePlayManager.Instance.deviceMoveSpeed;
+                    if (GamePlayManager.Instance.deviceMoveSpeed == 1)
+                    {
+                        //Camera.main.transform.position += new Vector3(6, 0, 0);
+                    }
                 }
                 break;
             case itemType.switch4:

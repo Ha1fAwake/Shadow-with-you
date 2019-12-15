@@ -7,7 +7,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
     public bool isControllingShadow = false;
     public bool isSpiningStage = false;
     public bool isUsingTorch = false;
-    public bool ifHaveMatch = false, ifHaveNormalKey = false, ifHaveTriKey = false;
+    public bool ifHaveMatch = false, ifHaveNormalKey = false, ifHaveTriKey = false,ifdDoorUnlocked = false;
     public int stageSpinFrame = 30;
     public float curXScale = 1, curYScale = 1;
 

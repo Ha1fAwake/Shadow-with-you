@@ -7,7 +7,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
     public bool isControllingShadow = false;
     public bool isSpiningStage = false;
     public bool isUsingTorch = false;
-    public bool ifHaveMatch = false, ifHaveNormalKey = false, ifHaveTriKey = false,ifdDoorUnlocked = false;
+    public bool ifHaveMatch = false, ifHaveNormalKey = false, ifHaveTriKey = false, ifdDoorUnlocked = false, stoneShadowIsReady = false;
     public int stageSpinFrame = 30;
     public float curXScale = 1, curYScale = 1;
 
@@ -19,6 +19,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
     public float deviceMoveSpeed = 0;
     public GameObject device1, device2;
     public GameObject steel, steel2;
+    public GameObject stone, stone2;
 
     bool isInGameScene = false;
 
@@ -37,6 +38,11 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
             shadowRig.constraints = RigidbodyConstraints2D.FreezeAll;
             isSpiningStage = true;
             EventCenter.Broadcast(MyEventType.startControlShadow);
+            if(stoneShadowIsReady)
+            {
+                stone2.SetActive(true);
+                stoneShadowIsReady = false;
+            }
         }
 
         if(!isControllingShadow && isUsingTorch && isInGameScene)
@@ -71,6 +77,12 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
         {
             steel = GameObject.Find("Steel");
             steel2 = GameObject.Find("Steel2");
+        }
+        if (level == 3)
+        {
+            stone = GameObject.Find("Stone2");
+            stone.SetActive(false);
+            stone2 = GameObject.Find("Stone");
         }
     }
 

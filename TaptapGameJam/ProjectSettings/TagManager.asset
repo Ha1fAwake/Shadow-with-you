@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Death
+  - Stone
   layers:
   - Default
   - TransparentFX

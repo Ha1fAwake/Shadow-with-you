@@ -15,7 +15,7 @@ public class LevelTwoSucceed : MonoBehaviour
         if (collision.gameObject.name == "Player")
         {
             cameraMain.DOMoveY(20, 0.5f);
-            something.DOText("我们应该可以在这个废弃工厂躲避一段时间吧......", 2.5f);
+            something.DOText("我们应该可以在这个废弃工厂躲避一段时间吧......", 3.5f);
             Invoke("LoadSceneThree", 1.5f);
         }
     }

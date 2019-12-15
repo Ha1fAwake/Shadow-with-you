@@ -5,10 +5,11 @@ using DG.Tweening;
 
 public class SceneTwoFungus : MonoBehaviour
 {
-    public Transform cameraMain;
+    public Transform dark;
+
     public void MoveCameraToTop()
     {
-        cameraMain.DOMoveY(0, 0.3f);
+        dark.DOMoveY(20, 0.3f);
     }
 
     public void BanController()

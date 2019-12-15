@@ -450,6 +450,7 @@ MonoBehaviour:
   itemsInLight: {fileID: 0}
   shadow: {fileID: 0}
   fire: {fileID: 0}
+  ifDeviceMove: 0
   deviceMoveSpeed: 0
   device1: {fileID: 0}
   device2: {fileID: 0}
@@ -1313,6 +1314,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1994144870}
     m_Modifications:
+    - target: {fileID: 794074722, guid: 1523bb63ed0617d4a8a939a2bc8e8467, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 885.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 794074722, guid: 1523bb63ed0617d4a8a939a2bc8e8467, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 280.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 794074722, guid: 1523bb63ed0617d4a8a939a2bc8e8467, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 501
+      objectReference: {fileID: 0}
+    - target: {fileID: 794074722, guid: 1523bb63ed0617d4a8a939a2bc8e8467, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 278
+      objectReference: {fileID: 0}
     - target: {fileID: 7246249003260112020, guid: 1523bb63ed0617d4a8a939a2bc8e8467,
         type: 3}
       propertyPath: m_Name

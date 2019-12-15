@@ -29,11 +29,11 @@ public class PlayerShadow : MonoBehaviour
     private Rigidbody2D curDragRig;
 
     //能量相关
-    private float maxDisToPlayer;
+    private float maxDisToPlayer = 5;
     public float energy = 100;
-    private float energyFallSpeed = 0.01f;
+    private float energyFallSpeed = 0.05f;
     private Transform player;
-    private Material material;
+    private Material material, material2, material3;
 
     //骨骼动画相关
     SkeletonAnimation animation;
@@ -46,7 +46,9 @@ public class PlayerShadow : MonoBehaviour
         rig = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Reality/Player").transform;
         SetOpposedPosToPlayer();
-        material = GetComponent<MeshRenderer>().material;
+        material = GetComponent<MeshRenderer>().materials[0];
+        material2 = GetComponent<MeshRenderer>().materials[1];
+        material3 = GetComponent<MeshRenderer>().materials[2];
         animation = GetComponent<SkeletonAnimation>();
         EventCenter.AddListener<int>(MyEventType.playerchangeanime, ChangeAnime);
     }
@@ -90,7 +92,9 @@ public class PlayerShadow : MonoBehaviour
         {
             energy = 100;
         }
-        material.SetFloat("_Alpha", 1 - energy * 0.01f);
+        material.SetFloat("_Alpha", energy * 0.01f);
+        material2.SetFloat("_Alpha", energy * 0.01f);
+        material3.SetFloat("_Alpha", energy * 0.01f);
     }
 
     /// <summary>

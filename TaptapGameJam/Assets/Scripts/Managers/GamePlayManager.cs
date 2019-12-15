@@ -15,6 +15,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
     public Transform reality, shadowWorld, torch,itemsInLight;
 
     public GameObject shadow, fire;
+    public bool ifDeviceMove = false;
     public float deviceMoveSpeed = 0;
     public GameObject device1, device2;
     public GameObject steel, steel2;
@@ -49,6 +50,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
     private void OnLevelWasLoaded(int level)
     {
         isControllingShadow = false;
+        isUsingTorch = false;
         if(level != 0)
         {
             isInGameScene = true;

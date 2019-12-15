@@ -189,6 +189,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isControllingShadow: 0
   isSpiningStage: 0
+  isUsingTorch: 0
+  ifHaveMatch: 0
+  ifHaveNormalKey: 0
+  ifHaveTriKey: 0
+  ifdDoorUnlocked: 0
+  stoneShadowIsReady: 0
   stageSpinFrame: 30
   curXScale: 1
   curYScale: 1
@@ -198,6 +204,16 @@ MonoBehaviour:
   shadowWorld: {fileID: 0}
   torch: {fileID: 0}
   itemsInLight: {fileID: 0}
+  shadow: {fileID: 0}
+  fire: {fileID: 0}
+  ifDeviceMove: 0
+  deviceMoveSpeed: 0
+  device1: {fileID: 0}
+  device2: {fileID: 0}
+  steel: {fileID: 0}
+  steel2: {fileID: 0}
+  stone: {fileID: 0}
+  stone2: {fileID: 0}
 --- !u!4 &296627910
 Transform:
   m_ObjectHideFlags: 0
@@ -442,6 +458,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 1
+  itemType: 0
   informationType: 0
 --- !u!114 &542173377
 MonoBehaviour:
@@ -505,12 +522,6 @@ Transform:
   m_Father: {fileID: 1432170028}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &894030405 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 24635187227547454, guid: 4497106bf7900614ca62368306572c53,
-    type: 3}
-  m_PrefabInstance: {fileID: 24635186342102395}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1012525684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,6 +1197,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4858882565012817086, guid: 6c467836ad31c5644a9ac59b1646b7c9,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5134600954936750751, guid: 6c467836ad31c5644a9ac59b1646b7c9,
         type: 3}
       propertyPath: m_AnchorMin.y
@@ -1686,6 +1702,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a6602f4ca6f1145ab4d27ad18ce860, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startPos: {x: 0, y: -0.75, z: 0}
+  offset: {x: 0, y: -0.15, z: 0}
 --- !u!212 &1875360510
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1778,7 +1796,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 136369922}
-  - {fileID: 894030405}
+  - {fileID: 24635186342102396}
   m_Father: {fileID: 1432170028}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1908,8 +1926,19 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 6467357686747033419, guid: 4497106bf7900614ca62368306572c53,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4497106bf7900614ca62368306572c53, type: 3}
+--- !u!4 &24635186342102396 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1990180142376002878, guid: 4497106bf7900614ca62368306572c53,
+    type: 3}
+  m_PrefabInstance: {fileID: 24635186342102395}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1428801795128260839
 PrefabInstance:
   m_ObjectHideFlags: 0

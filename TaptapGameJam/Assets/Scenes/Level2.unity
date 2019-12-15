@@ -1021,6 +1021,36 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0.36
       objectReference: {fileID: 0}
+    - target: {fileID: 1277708062752322092, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277708062752322092, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51a5f908b85ef5741b7393cf28c5035f, type: 2}
+    - target: {fileID: 1277708062752322092, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3a374afa55dd3a24ab8bcbfc0c4e6808, type: 2}
+    - target: {fileID: 1277708062752322092, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: 2100000, guid: 51a5f908b85ef5741b7393cf28c5035f, type: 2}
+    - target: {fileID: 1277708062752322093, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: initialSkinName
+      value: danlan
+      objectReference: {fileID: 0}
+    - target: {fileID: 1277708062752322094, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1277708064132527576, guid: 8b37ad43b5d7835419a20efed7b5609b,
         type: 3}
       propertyPath: m_Name
@@ -1085,6 +1115,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 6904292116008248415, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8b37ad43b5d7835419a20efed7b5609b, type: 3}
@@ -2084,7 +2119,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!212 &684395207
 SpriteRenderer:
   m_ObjectHideFlags: 0

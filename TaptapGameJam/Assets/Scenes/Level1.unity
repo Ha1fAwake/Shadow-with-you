@@ -1221,7 +1221,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: be4ea861ef4398c4fb7cb5e83e6befd8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4facfdd9063cdb14cb7b302083dae78e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1240,8 +1240,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730056678}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.5, z: 0}
-  m_LocalScale: {x: 27, y: 7, z: 1}
+  m_LocalPosition: {x: 0, y: -4.84, z: 0}
+  m_LocalScale: {x: 1.9, y: 1.9, z: 1}
   m_Children: []
   m_Father: {fileID: 1301377964}
   m_RootOrder: 4
@@ -3068,6 +3068,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1277708064132527583, guid: 8b37ad43b5d7835419a20efed7b5609b,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5200666532066046403, guid: 8b37ad43b5d7835419a20efed7b5609b,
         type: 3}
       propertyPath: m_Mesh
@@ -4186,8 +4191,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodeRect:
     serializedVersion: 2
-    x: 65
-    y: 70
+    x: 66.03093
+    y: 68.96907
     width: 120
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
@@ -4246,9 +4251,9 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 1987094309}
+  - {fileID: 1987094263}
   selectedCommands:
-  - {fileID: 1987094311}
+  - {fileID: 1987094284}
   variables: []
   description: 
   stepPause: 0
@@ -4743,7 +4748,7 @@ MonoBehaviour:
   itemId: 23
   indentLevel: 0
   targetObject: {fileID: 1017018753}
-  methodName: MoveCameraToTop
+  methodName: MoveCameraToCenter
   delay: 0
 --- !u!114 &1987094285
 MonoBehaviour:
@@ -4788,7 +4793,7 @@ MonoBehaviour:
     serializedVersion: 2
     x: 292
     y: 91
-    width: 163.40207
+    width: 159.6907
     height: 40
   tint: {r: 1, g: 1, b: 1, a: 1}
   useCustomTint: 0
@@ -5359,7 +5364,7 @@ MonoBehaviour:
   durationOLD: 0
 --- !u!114 &1987094311
 MonoBehaviour:
-  m_ObjectHideFlags: 0
+  m_ObjectHideFlags: 2
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
@@ -5630,7 +5635,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

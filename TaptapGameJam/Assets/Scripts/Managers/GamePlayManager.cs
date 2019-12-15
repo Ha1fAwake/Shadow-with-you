@@ -8,7 +8,7 @@ public class GamePlayManager : TMonoSingleton<GamePlayManager>, IInitializable
     public bool isSpiningStage = false;
     public bool isUsingTorch = false;
     public bool ifHaveMatch = false, ifHaveNormalKey = false, ifHaveTriKey = false, ifdDoorUnlocked = false, stoneShadowIsReady = false;
-    public int stageSpinFrame = 30;
+    public int stageSpinFrame = 15;
     public float curXScale = 1, curYScale = 1;
 
     public Rigidbody2D playerRig, shadowRig;

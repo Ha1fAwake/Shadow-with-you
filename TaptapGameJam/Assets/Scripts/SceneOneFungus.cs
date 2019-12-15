@@ -8,9 +8,10 @@ public class SceneOneFungus : MonoBehaviour
     public Transform cameraMain;
     public Transform parents;
 
-    public void MoveCameraToTop()
+    public void MoveCameraToCenter()
     {
         cameraMain.DOMoveY(0, 0.3f);
+        Camera.main.DOOrthoSize(5, 2f);
     }
 
     public void ParentsLeave()
